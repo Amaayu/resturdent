@@ -94,15 +94,8 @@ function AppContent() {
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter
-        future={{
-          v7_startTransition: true,
-          v7_relativeSplatPath: true
-        }}
-      >
-        <AppContent />
-        <Toaster position="top-right" />
-      </BrowserRouter>
+      <AppContent />
+      <Toaster position="top-right" />
     </QueryClientProvider>
   );
 }
