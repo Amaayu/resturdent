@@ -11,7 +11,7 @@
     "build": "cd client && npm install --legacy-peer-deps && npm run build",
     "build:all": "npm run build",
     "start": "node server/src/server.js",
-    "start:prod": "cd server && npm start"
+    "start:prod": "node server/src/server.js"
   },
   "keywords": ["restaurant", "food", "ordering", "react", "express", "mongodb"],
   "author": "",
