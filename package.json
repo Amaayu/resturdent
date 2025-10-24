@@ -8,7 +8,7 @@
     "server": "cd server && npm run dev",
     "client": "cd client && npm run dev",
     "seed": "cd server && npm run seed",
-    "build": "cd client && npm install --legacy-peer-deps && npm install -D vite && npm run build",
+    "build": "cd client && npm install --legacy-peer-deps && npm run build",
     "build:all": "npm run build",
     "start:prod": "cd server && npm start"
   },
