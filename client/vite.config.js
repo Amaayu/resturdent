@@ -1,7 +1,22 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-})
+  build: {
+    chunkSizeWarningLimit: 1000, // Increase chunk size warning limit
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Split vendor libraries into separate chunks
+          react: ['react', 'react-dom', 'react-router-dom'],
+          vendor: ['axios', 'zustand', '@tanstack/react-query'],
+        },
+      },
+    },
+  },
+  server: {
+    historyApiFallback: true,
+  },
+  base: '/', // Ensure base URL is set correctly
+});
