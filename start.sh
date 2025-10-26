@@ -1,18 +1,22 @@
 #!/bin/bash
 
+# Exit on error
+set -e
+
 # Start the server in the background
 cd server
-npm install
-npm start &
-
-# Store the server process ID
+npm install --only=production
+node src/server.js &
 SERVER_PID=$!
 
-# Move to client directory and start the client
+# Build the client
 cd ../client
-npm install
-npm run dev
+npm install --only=production
+npm run build
 
-# When the client is stopped, also stop the server
-kill $SERVER_PID 2>/dev/null
-exit 0
+# Serve the built files
+npx serve -s dist -l 5173 &
+CLIENT_PID=$!
+
+# Keep the script running
+wait $SERVER_PID $CLIENT_PID
