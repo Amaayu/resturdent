@@ -13,6 +13,11 @@ import authRoutes from './routes/authRoutes.js';
 import restaurantRoutes from './routes/restaurantRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config();
 
@@ -74,7 +79,7 @@ app.use('/api', limiter);
 // Make io accessible in routes
 app.set('io', io);
 
-// Routes
+// API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/restaurants', restaurantRoutes);
 app.use('/api/orders', orderRoutes);
@@ -82,6 +87,15 @@ app.use('/api/users', userRoutes);
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Server is running' });
+});
+
+// Serve static files from the client's build directory
+const clientBuildPath = path.join(__dirname, '../../../client/dist');
+app.use(express.static(clientBuildPath));
+
+// For all other routes, serve the React app's index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(clientBuildPath, 'index.html'));
 });
 
 // Error handling

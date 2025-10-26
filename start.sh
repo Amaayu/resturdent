@@ -4,29 +4,27 @@
 set -e
 
 # Install server dependencies
+echo "Installing server dependencies..."
 cd server
 npm install --only=production
 
 # Install all client dependencies (including devDependencies) for build
+echo "Installing client dependencies..."
 cd ../client
 npm install
 
 # Build the client
+echo "Building client..."
 npm run build
 
 # Clean up dev dependencies after build to reduce image size
+echo "Cleaning up..."
 npm prune --production
 
-# Start the server in the background
+# Go back to server directory
 cd ../server
-node src/server.js &
-SERVER_PID=$!
 
-# Serve the built files from the client
-cd ../client
-npx serve -s dist -l 5173 &
-CLIENT_PID=$!
-
-# Keep the script running
-wait $SERVER_PID $CLIENT_PID
+# Start the server
+echo "Starting server..."
+node src/server.js
 wait $SERVER_PID $CLIENT_PID
