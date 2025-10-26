@@ -90,12 +90,27 @@ app.get('/api/health', (req, res) => {
 });
 
 // Serve static files from the client's build directory
-const clientBuildPath = path.join(__dirname, '../../../client/dist');
+const clientBuildPath = path.join(process.cwd(), '..', 'client', 'dist');
+const indexPath = path.join(clientBuildPath, 'index.html');
+
+// Serve static files
 app.use(express.static(clientBuildPath));
 
 // For all other routes, serve the React app's index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.join(clientBuildPath, 'index.html'));
+  if (fs.existsSync(indexPath)) {
+    res.sendFile(indexPath);
+  } else {
+    res.status(404).json({ 
+      error: 'Client build not found',
+      paths: {
+        clientBuildPath,
+        indexPath,
+        cwd: process.cwd(),
+        dirname: __dirname
+      }
+    });
+  }
 });
 
 // Error handling
