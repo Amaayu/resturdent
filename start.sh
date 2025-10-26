@@ -3,20 +3,27 @@
 # Exit on error
 set -e
 
-# Start the server in the background
+# Install server dependencies
 cd server
 npm install --only=production
+
+# Install client dependencies
+cd ../client
+npm install --only=production
+
+# Build the client
+npm run build
+
+# Start the server in the background
+cd ../server
 node src/server.js &
 SERVER_PID=$!
 
-# Build the client
+# Serve the built files from the client
 cd ../client
-npm install --only=production
-npm run build
-
-# Serve the built files
 npx serve -s dist -l 5173 &
 CLIENT_PID=$!
 
 # Keep the script running
+wait $SERVER_PID $CLIENT_PID
 wait $SERVER_PID $CLIENT_PID
