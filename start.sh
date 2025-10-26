@@ -7,12 +7,15 @@ set -e
 cd server
 npm install --only=production
 
-# Install client dependencies
+# Install all client dependencies (including devDependencies) for build
 cd ../client
-npm install --only=production
+npm install
 
 # Build the client
 npm run build
+
+# Clean up dev dependencies after build to reduce image size
+npm prune --production
 
 # Start the server in the background
 cd ../server
