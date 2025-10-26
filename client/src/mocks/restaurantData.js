@@ -1,0 +1,278 @@
+// Mock restaurant data for development and testing
+export const mockRestaurants = [
+  {
+    _id: '1',
+    name: 'Pizza Palace',
+    description: 'Authentic Italian pizzas made with love and traditional recipes. Try our famous Margherita!',
+    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3',
+    rating: 4.5,
+    priceRange: 'Moderate',
+    deliveryTime: '30-45 min',
+    cuisineType: ['Italian', 'Pizza'],
+    location: 'Downtown'
+  },
+  {
+    _id: '2',
+    name: 'Burger Barn',
+    description: 'Juicy burgers with fresh ingredients and secret sauce that will make you come back for more!',
+    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3',
+    rating: 4.3,
+    priceRange: 'Moderate',
+    deliveryTime: '25-40 min',
+    cuisineType: ['American', 'Burgers', 'Fast Food'],
+    location: 'Westside'
+  },
+  {
+    _id: '3',
+    name: 'Sushi Express',
+    description: 'Fresh and delicious sushi rolls prepared by expert chefs. Experience authentic Japanese flavors.',
+    image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-4.0.3',
+    rating: 4.7,
+    priceRange: 'Expensive',
+    deliveryTime: '35-50 min',
+    cuisineType: ['Japanese', 'Sushi', 'Asian'],
+    location: 'Downtown'
+  },
+  {
+    _id: '4',
+    name: 'Taco Fiesta',
+    description: 'Vibrant Mexican flavors in every bite. Our tacos are made with authentic recipes and fresh ingredients.',
+    image: 'https://images.unsplash.com/photo-1611420618315-42b70d4da5e0?ixlib=rb-4.0.3',
+    rating: 4.4,
+    priceRange: 'Moderate',
+    deliveryTime: '20-35 min',
+    cuisineType: ['Mexican', 'Tacos', 'Latin'],
+    location: 'East End'
+  },
+  {
+    _id: '5',
+    name: 'Curry House',
+    description: 'Experience the rich and aromatic flavors of authentic Indian cuisine prepared with traditional spices.',
+    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3',
+    rating: 4.6,
+    priceRange: 'Moderate',
+    deliveryTime: '30-45 min',
+    cuisineType: ['Indian', 'Asian'],
+    location: 'Uptown'
+  },
+  {
+    _id: '6',
+    name: 'Pasta Paradise',
+    description: 'Handmade pasta dishes with rich, flavorful sauces that will transport you to Italy.',
+    image: 'https://images.unsplash.com/photo-1604382355076-af4b0eb60143?ixlib=rb-4.0.3',
+    rating: 4.5,
+    priceRange: 'Moderate',
+    deliveryTime: '25-40 min',
+    cuisineType: ['Italian', 'Pasta'],
+    location: 'Riverside'
+  },
+  {
+    _id: '7',
+    name: 'Burger Joint',
+    description: 'Classic American burgers with a modern twist. Try our signature BBQ bacon cheeseburger!',
+    image: 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?ixlib=rb-4.0.3',
+    rating: 4.2,
+    priceRange: 'Moderate',
+    deliveryTime: '20-35 min',
+    cuisineType: ['American', 'Burgers'],
+    location: 'Midtown'
+  },
+  {
+    _id: '8',
+    name: 'Dragon Wok',
+    description: 'Authentic Chinese cuisine with a wide variety of dishes to satisfy your cravings.',
+    image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3',
+    rating: 4.1,
+    priceRange: 'Moderate',
+    deliveryTime: '30-45 min',
+    cuisineType: ['Chinese', 'Asian'],
+    location: 'Chinatown'
+  },
+  {
+    _id: '9',
+    name: 'Mediterranean Delight',
+    description: 'Fresh and healthy Mediterranean dishes made with the finest ingredients.',
+    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3',
+    rating: 4.6,
+    priceRange: 'Expensive',
+    deliveryTime: '25-40 min',
+    cuisineType: ['Mediterranean', 'Healthy', 'Greek'],
+    location: 'Uptown'
+  },
+  {
+    _id: '10',
+    name: 'BBQ Pit',
+    description: 'Slow-smoked meats and classic barbecue sides that will leave you licking your fingers.',
+    image: 'https://images.unsplash.com/photo-1529193591184-b1c580e0322b?ixlib=rb-4.0.3',
+    rating: 4.4,
+    priceRange: 'Moderate',
+    deliveryTime: '35-50 min',
+    cuisineType: ['BBQ', 'American', 'Meat'],
+    location: 'Southside'
+  },
+  {
+    _id: '11',
+    name: 'Veggie Heaven',
+    description: 'Delicious plant-based dishes that even meat lovers will enjoy. Healthy never tasted so good!',
+    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3',
+    rating: 4.3,
+    priceRange: 'Moderate',
+    deliveryTime: '25-40 min',
+    cuisineType: ['Vegan', 'Vegetarian', 'Healthy'],
+    location: 'Downtown'
+  },
+  {
+    _id: '12',
+    name: 'Seafood Shack',
+    description: 'Fresh seafood caught daily and prepared with simple, delicious recipes.',
+    image: 'https://images.unsplash.com/photo-1504674900247-087703934569?ixlib=rb-4.0.3',
+    rating: 4.5,
+    priceRange: 'Expensive',
+    deliveryTime: '30-45 min',
+    cuisineType: ['Seafood', 'American'],
+    location: 'Harbor District'
+  },
+  {
+    _id: '13',
+    name: 'Burrito Brothers',
+    description: 'Massive, flavorful burritos stuffed with your choice of fillings and toppings.',
+    image: 'https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?ixlib=rb-4.0.3',
+    rating: 4.2,
+    priceRange: 'Moderate',
+    deliveryTime: '20-35 min',
+    cuisineType: ['Mexican', 'Burritos'],
+    location: 'Westside'
+  },
+  {
+    _id: '14',
+    name: 'Peking Duck House',
+    description: 'Authentic Chinese cuisine featuring our famous Peking duck and other traditional dishes.',
+    image: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3',
+    rating: 4.7,
+    priceRange: 'Expensive',
+    deliveryTime: '35-50 min',
+    cuisineType: ['Chinese', 'Asian'],
+    location: 'Chinatown'
+  },
+  {
+    _id: '15',
+    name: 'The Steakhouse',
+    description: 'Premium cuts of beef, dry-aged to perfection and cooked exactly to your liking.',
+    image: 'https://images.unsplash.com/photo-1432139509613-5c4255815697?ixlib=rb-4.0.3',
+    rating: 4.8,
+    priceRange: 'Fine Dining',
+    deliveryTime: '40-55 min',
+    cuisineType: ['Steakhouse', 'American'],
+    location: 'Uptown'
+  },
+  {
+    _id: '16',
+    name: 'Falafel King',
+    description: 'Authentic Middle Eastern cuisine featuring our famous falafel and hummus.',
+    image: 'https://images.unsplash.com/photo-1512152272829-e3139592d56f?ixlib=rb-4.0.3',
+    rating: 4.4,
+    priceRange: '$',
+    deliveryTime: '20-35 min',
+    cuisineType: ['Middle Eastern', 'Vegetarian', 'Halal'],
+    location: 'Midtown'
+  },
+  {
+    _id: '17',
+    name: 'Poke Bowl',
+    description: 'Fresh, healthy poke bowls with your choice of protein, toppings, and signature sauces.',
+    image: 'https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?ixlib=rb-4.0.3',
+    rating: 4.6,
+    priceRange: 'Moderate',
+    deliveryTime: '20-35 min',
+    cuisineType: ['Hawaiian', 'Healthy', 'Seafood'],
+    location: 'Downtown'
+  },
+  {
+    _id: '18',
+    name: 'The Breakfast Club',
+    description: 'Breakfast all day! From fluffy pancakes to hearty omelets, we\'ve got your morning covered.',
+    image: 'https://images.unsplash.com/photo-1484723091739-30a097dab219?ixlib=rb-4.0.3',
+    rating: 4.3,
+    priceRange: 'Moderate',
+    deliveryTime: '25-40 min',
+    cuisineType: ['Breakfast', 'Brunch', 'American'],
+    location: 'Uptown'
+  },
+  {
+    _id: '19',
+    name: 'Pizza Napoletana',
+    description: 'Authentic Neapolitan pizza cooked in a wood-fired oven, just like in Italy.',
+    image: 'https://images.unsplash.com/photo-1595708684082-a173bb3a06c5?ixlib=rb-4.0.3',
+    rating: 4.7,
+    priceRange: 'Moderate',
+    deliveryTime: '30-45 min',
+    cuisineType: ['Italian', 'Pizza'],
+    location: 'Little Italy'
+  },
+  {
+    _id: '20',
+    name: 'Burger & Beer',
+    description: 'Gourmet burgers paired with craft beers in a casual, friendly atmosphere.',
+    image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?ixlib=rb-4.0.3',
+    rating: 4.4,
+    priceRange: 'Moderate',
+    deliveryTime: '25-40 min',
+    cuisineType: ['American', 'Burgers', 'Bar Food'],
+    location: 'Brewery District'
+  },
+  {
+    _id: '21',
+    name: 'Sushi Samba',
+    description: 'A fusion of Japanese, Brazilian, and Peruvian cuisine in a vibrant setting.',
+    image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-4.0.3',
+    rating: 4.8,
+    priceRange: 'Expensive',
+    deliveryTime: '35-50 min',
+    cuisineType: ['Japanese', 'Sushi', 'Fusion'],
+    location: 'Downtown'
+  },
+  {
+    _id: '22',
+    name: 'The Green Leaf',
+    description: 'Healthy, organic meals made with locally-sourced ingredients for the health-conscious foodie.',
+    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3',
+    rating: 4.5,
+    priceRange: 'Expensive',
+    deliveryTime: '25-40 min',
+    cuisineType: ['Healthy', 'Organic', 'Vegetarian'],
+    location: 'Uptown'
+  },
+  {
+    _id: '23',
+    name: 'Tandoori Nights',
+    description: 'Authentic North Indian cuisine with a focus on tandoori specialties and rich curries.',
+    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3',
+    rating: 4.6,
+    priceRange: 'Moderate',
+    deliveryTime: '30-45 min',
+    cuisineType: ['Indian', 'Tandoori', 'Asian'],
+    location: 'Little India'
+  },
+  {
+    _id: '24',
+    name: 'The Burger Joint',
+    description: 'No-frills, delicious burgers made with premium beef and fresh toppings.',
+    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3',
+    rating: 4.3,
+    priceRange: 'Moderate',
+    deliveryTime: '20-35 min',
+    cuisineType: ['American', 'Burgers'],
+    location: 'Midtown'
+  },
+  {
+    _id: '25',
+    name: 'La Pasta Fresca',
+    description: 'Handmade pasta dishes with authentic Italian recipes passed down through generations.',
+    image: 'https://images.unsplash.com/photo-1611270630091-2c527632a08b?ixlib=rb-4.0.3',
+    rating: 4.7,
+    priceRange: 'Expensive',
+    deliveryTime: '30-45 min',
+    cuisineType: ['Italian', 'Pasta'],
+    location: 'Little Italy'
+  }
+];
