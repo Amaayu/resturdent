@@ -7,14 +7,15 @@ import cookieParser from 'cookie-parser';
 import rateLimit from 'express-rate-limit';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { connectDB } from './config/db.js';
 import { errorHandler, notFound } from './middleware/errorHandler.js';
 import authRoutes from './routes/authRoutes.js';
 import restaurantRoutes from './routes/restaurantRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import userRoutes from './routes/userRoutes.js';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -89,26 +90,50 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Server is running' });
 });
 
-// Serve static files from the client's build directory
-const clientBuildPath = path.join(process.cwd(), '..', 'client', 'dist');
+// Path to client build - handle both development and production environments
+const clientBuildPath = process.env.NODE_ENV === 'production'
+  ? path.join(process.cwd(), '..', 'client', 'dist')
+  : path.join(process.cwd(), 'client', 'dist');
+
 const indexPath = path.join(clientBuildPath, 'index.html');
+
+// Log paths for debugging
+console.log('Current working directory:', process.cwd());
+console.log('Client build path:', clientBuildPath);
+console.log('Index file path:', indexPath);
 
 // Serve static files
 app.use(express.static(clientBuildPath));
 
 // For all other routes, serve the React app's index.html
 app.get('*', (req, res) => {
-  if (fs.existsSync(indexPath)) {
-    res.sendFile(indexPath);
-  } else {
-    res.status(404).json({ 
-      error: 'Client build not found',
-      paths: {
-        clientBuildPath,
-        indexPath,
-        cwd: process.cwd(),
-        dirname: __dirname
-      }
+  try {
+    if (fs.existsSync(indexPath)) {
+      res.sendFile(indexPath);
+    } else {
+      console.error('Client build not found at:', indexPath);
+      res.status(404).json({
+        error: 'Client build not found',
+        message: 'The client application has not been built yet',
+        paths: {
+          clientBuildPath,
+          indexPath,
+          cwd: process.cwd(),
+          dirname: __dirname,
+          filesInBuildDir: fs.existsSync(clientBuildPath) ? fs.readdirSync(clientBuildPath) : 'Directory does not exist'
+        },
+        env: {
+          NODE_ENV: process.env.NODE_ENV,
+          PORT: process.env.PORT
+        }
+      });
+    }
+  } catch (error) {
+    console.error('Error serving static files:', error);
+    res.status(500).json({
+      error: 'Internal Server Error',
+      message: error.message,
+      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
     });
   }
 });
